@@ -1,0 +1,18 @@
+{
+  "name": "react-drupal-relaxed",
+  "version": "1.0.0",
+  "description": "Shared React components and libraries, for replicating and displaying data from a Drupal 8 site, using RELAXed.",
+  "keywords": [
+    "react",
+    "drupal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/relaxedws/react-drupal-relaxed.git"
+  },
+  "author": "Mikkel Hoegh <mikkel@hoegh.org>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.14.7"
+  }
+}
