@@ -1,4 +1,5 @@
 import {
+  DATABASE_ALL_DBS_REQUESTED,
   DATABASE_SET_CONFIGURATION
 } from './constants'
 import { actions as databaseActions } from './actions'
@@ -11,6 +12,19 @@ function createChangeChannel (replication) {
   // every change event will call put on the channel
   replication.on('change', channel.put)
   return channel
+}
+
+/**
+ * Saga to load a list of databases we can connect to on the server.
+ */
+function * getAllDBs (getState) {
+  yield take(DATABASE_ALL_DBS_REQUESTED)
+
+  const state = getState()
+
+  const result = yield call(state.database.wrapper.allDBs)
+
+  yield put(databaseActions.allDBsResult(result))
 }
 
 function * monitorChangeEvents (channel) {
@@ -45,4 +59,4 @@ function * startReplication (getState) {
 }
 
 // Export the sagas we provide.
-export { startReplication }
+export { getAllDBs, startReplication }

@@ -1,4 +1,5 @@
 import {
+  DATABASE_ALL_DBS_REQUESTED,
   DATABASE_ALL_DBS_RESULT,
   DATABASE_ALL_DOCS_RESULT,
   DATABASE_GET_DOC_RESULT,
@@ -11,17 +12,7 @@ import { createAction } from 'redux-actions'
 
 export const allDBsResult = createAction(DATABASE_ALL_DBS_RESULT)
 export const allDocsResult = createAction(DATABASE_ALL_DOCS_RESULT)
-export const getAllDBs = () => {
-  return (dispatch, getState) => {
-    const state = getState()
-
-    state.database.wrapper.allDBs().then((result) => {
-      dispatch(allDBsResult(result))
-    }).catch((err) => {
-      console.error(err)
-    })
-  }
-}
+export const getAllDBs = createAction(DATABASE_ALL_DBS_REQUESTED)
 export const getAllDocs = () => {
   return (dispatch, getState) => {
     const state = getState()
