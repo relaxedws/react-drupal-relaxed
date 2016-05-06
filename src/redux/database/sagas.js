@@ -23,7 +23,7 @@ function * monitorChangeEvents (channel) {
 /**
  * Saga to start replication, when database configuration is set.
  */
-function * startReplication (getState) {
+export function * startReplication (getState) {
   // Wait for the configuration to be set. This can happen multiple
   // times during the life cycle, for example when the user wants to
   // switch database/workspace.
@@ -45,4 +45,4 @@ function * startReplication (getState) {
 }
 
 // Export the sagas we provide.
-export { startReplication }
+export const all = [ startReplication ];
