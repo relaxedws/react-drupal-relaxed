@@ -1,8 +1,8 @@
 import DatabaseWrapper from 'database/wrapper'
 import {
-  DATABASE_ALL_DBS_RESULT,
-  DATABASE_ALL_DOCS_RESULT,
-  DATABASE_GET_DOC_RESULT,
+  DATABASE_ALL_DBS_SUCCESS,
+  DATABASE_ALL_DOCS_SUCCESS,
+  DATABASE_GET_DOC_SUCCESS,
   DATABASE_REPLICATION_CHANGE,
   DATABASE_REPLICATION_STARTED,
   DATABASE_SET_CONFIGURATION
@@ -18,21 +18,21 @@ const defaults = {
 }
 
 export default handleActions({
-  [DATABASE_ALL_DBS_RESULT]: (state, { payload }) => {
+  [DATABASE_ALL_DBS_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
       allDBsResult: payload
     }
   },
 
-  [DATABASE_ALL_DOCS_RESULT]: (state, { payload }) => {
+  [DATABASE_ALL_DOCS_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
       allDocsResult: payload
     }
   },
 
-  [DATABASE_GET_DOC_RESULT]: (state, { payload }) => {
+  [DATABASE_GET_DOC_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
       getDocResults: {

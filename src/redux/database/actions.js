@@ -1,7 +1,7 @@
 import {
-  DATABASE_ALL_DBS_RESULT,
-  DATABASE_ALL_DOCS_RESULT,
-  DATABASE_GET_DOC_RESULT,
+  DATABASE_ALL_DBS_SUCCESS,
+  DATABASE_ALL_DOCS_SUCCESS,
+  DATABASE_GET_DOC_SUCCESS,
   DATABASE_REPLICATION_CHANGE,
   DATABASE_REPLICATION_COMPLETE,
   DATABASE_REPLICATION_STARTED,
@@ -9,14 +9,14 @@ import {
 } from './constants'
 import { createAction } from 'redux-actions'
 
-export const allDBsResult = createAction(DATABASE_ALL_DBS_RESULT)
-export const allDocsResult = createAction(DATABASE_ALL_DOCS_RESULT)
+export const allDBsSuccess = createAction(DATABASE_ALL_DBS_SUCCESS)
+export const allDocsSuccess = createAction(DATABASE_ALL_DOCS_SUCCESS)
 export const getAllDBs = () => {
   return (dispatch, getState) => {
     const state = getState()
 
     state.database.wrapper.allDBs().then((result) => {
-      dispatch(allDBsResult(result))
+      dispatch(allDBsSuccess(result))
     }).catch((err) => {
       console.error(err)
     })
@@ -27,7 +27,7 @@ export const getAllDocs = () => {
     const state = getState()
 
     state.database.wrapper.allDocs().then((result) => {
-      dispatch(allDocsResult(result))
+      dispatch(allDocsSuccess(result))
     }).catch((err) => {
       console.error(err)
     })
@@ -38,13 +38,13 @@ export const getDoc = (entityId) => {
     const state = getState()
 
     state.database.wrapper.get(entityId).then((doc) => {
-      dispatch(getDocResult(doc))
+      dispatch(getDocSuccess(doc))
     }).catch((err) => {
       console.error(err)
     })
   }
 }
-export const getDocResult = createAction(DATABASE_GET_DOC_RESULT)
+export const getDocSuccess = createAction(DATABASE_GET_DOC_SUCCESS)
 export const replicationChange = createAction(DATABASE_REPLICATION_CHANGE)
 export const replicationComplete = createAction(DATABASE_REPLICATION_COMPLETE)
 export const replicationStarted = createAction(DATABASE_REPLICATION_STARTED)
